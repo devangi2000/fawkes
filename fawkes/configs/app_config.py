@@ -1,3 +1,5 @@
+import fawkes.utils.utils as utils
+import fawkes.constants.constants as constants
 import json
 import os
 from pprint import pprint
@@ -6,9 +8,6 @@ import jsonschema
 from jsonschema import ValidationError
 
 sys.path.append(os.path.realpath("."))
-
-import fawkes.constants.constants as constants
-import fawkes.utils.utils as utils
 
 
 class App:
@@ -127,6 +126,22 @@ class JiraConfig:
         self.bug_type = config["bug_type"]
 
 
+class SummarizationConfig:
+    """ The configurations required to generate review summary
+
+    Attributes:
+        num_clusters:
+            User defined number of clusters for summarization
+        summary_length_per_cluster:
+            Total summary length per cluster
+
+    """
+
+    def __init__(self, config):
+        self.num_clusters = config["num_clusters"]
+        self.summary_length_per_cluster = config["summary_length_per_cluster"]
+
+
 class CategorizationAlgorithms:
     TEXT_MATCH_CLASSIFICATION = "text_match"
     LSTM_CLASSIFICATION = "lstm_classification"
@@ -173,6 +188,7 @@ class AlgorithmConfig:
         self.algorithms_to_run = config["algorithms_to_run"]
         self.algorithm_days_filter = config["algorithm_days_filter"]
         self.categorization = CategorizationAlgorithmConfig(config["categorization"])
+        self.summarization = SummarizationConfig(config["summarization"])
 
 
 class ReviewChannelTypes:
