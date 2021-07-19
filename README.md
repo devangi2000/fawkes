@@ -22,7 +22,7 @@
 </div>
 <h2>Features</h2>
 <ul>
-    <li>🚀 Integration with multiple data source</li>
+    <li>🚀 Integration with multiple data sources </li>
     <li>⚡️ Kibana dashboard for searching and filtering data</li>
     <li>💎 Simple, Configurable and Powerful</li>
     <li>🔥 Built entirely using open-source tools</li>
